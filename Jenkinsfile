@@ -11,9 +11,9 @@ pipeline {
         stage('build') {
             steps {
                 script {
-                    sh 'cd $HOME/workspace/web/Docker-web && docker build -t mvpar/vproweb .'
-                    sh 'cd $HOME/workspace/web/Docker-app && docker build -t mvpar/vproapp .'
-                    sh 'cd $HOME/workspace/web/Docker-db && docker build -t mvpar/vprodb .'
+                    sh 'cd $HOME/workspace/visualpath/Docker-web && docker build -t mvpar/vproweb .'
+                    sh 'cd $HOME/workspace/visualpath/Docker-app && docker build -t mvpar/vproapp .'
+                    sh 'cd $HOME/workspace/visualpath/Docker-db && docker build -t mvpar/vprodb .'
                 }
                 
             }
@@ -33,7 +33,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 script {
-                    sh "cd $HOME/workspace/web/compose && docker-compose down && docker-compose up -d"
+                    sh "cd $HOME/workspace/visualpath/compose && docker-compose down && docker-compose up -d"
                 }
             }
         }      
