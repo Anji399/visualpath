@@ -19,7 +19,7 @@ pipeline {
                     echo "My Image is ${VERSION}"
                     sh 'cd $HOME/workspace/web/Docker-web && docker build -t mvpar/vproweb:${VERSION} .'
                     sh 'cd $HOME/workspace/web/Docker-app && docker build -t mvpar/vproapp:${VERSION} .'
-                    'cd $HOME/workspace/web/Docker-db && docker build -t mvpar/vprodb:${VERSION} .'
+                    sh 'cd $HOME/workspace/web/Docker-db && docker build -t mvpar/vprodb:${VERSION} .'
                 }
                 
             }
