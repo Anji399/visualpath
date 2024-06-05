@@ -33,7 +33,7 @@ pipeline {
                 }
             }
         }
-        stage('pull&deploy') {
+ //       stage('pull&deploy') {
             steps {
                 script {
                     sh 'docker rm -v -f $(docker ps -qa)'
@@ -41,6 +41,6 @@ pipeline {
                     sh 'docker run -d --name php -p 81:80 mvpar/vproweb:${VERSION}'
                 }
             }
-        }
+        }//
     }
 }
