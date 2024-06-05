@@ -36,7 +36,7 @@ pipeline {
         stage('pull&deploy') {
             steps {
                 script {
-                    sh 'docker rm -f php'
+                    sh 'docker rm -v -f $(docker ps -qa)'
                     sh 'docker pull mvpar/vproweb:${VERSION}'
                     sh 'docker run -d --name php -p 81:80 mvpar/vproweb:${VERSION}'
                 }
