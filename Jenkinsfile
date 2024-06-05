@@ -18,6 +18,7 @@ pipeline {
             steps {
                 script {
                     echo "My Image is ${VERSION}"
+                    sh 'cd $HOME/workspace/web/Docker-web'
                     sh 'docker build -t mvpar/vproweb:${VERSION} .'
                 }
                 
