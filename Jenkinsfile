@@ -10,8 +10,7 @@ pipeline {
             steps {
                 script {
                     git changelog: false, poll: false, url: 'https://github.com/Anji399/vp-docker.git'
-                }
-                
+                }    
             }
         }
         stage('build') {
@@ -19,6 +18,8 @@ pipeline {
                 script {
                     echo "My Image is ${VERSION}"
                     sh 'cd $HOME/workspace/web/Docker-web && docker build -t mvpar/vproweb:${VERSION} .'
+                    sh 'cd $HOME/workspace/web/Docker-app && docker build -t mvpar/vproapp:${VERSION} .'
+                    'cd $HOME/workspace/web/Docker-db && docker build -t mvpar/vprodb:${VERSION} .'
                 }
                 
             }
@@ -29,6 +30,8 @@ pipeline {
                    withCredentials([usernamePassword(credentialsId: 'docker', passwordVariable: 'REGISTRY_PWD', usernameVariable: 'REGISTRY_USER')]) {
                        sh 'docker login -u=$REGISTRY_USER -p=$REGISTRY_PWD'    
                        sh 'docker push mvpar/vproweb:${VERSION}'
+                       sh 'docker push mvpar/vproapp:${VERSION}'
+                       sh 'docker push mvpar/vprodb:${VERSION}'
                     }
                 }
             }
