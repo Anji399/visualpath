@@ -1,7 +1,7 @@
 version: '3.9'
 services:
   vprodb:
-    image: mvpar/vprodb
+    image: mvpar/vprodb:{VERSION}
     ports:
       - "3306:3306"
     volumes:
@@ -23,16 +23,16 @@ services:
       - RABBITMQ_DEFAULT_PASS=guest
 
   vproapp:
-    image: mvpar/vproapp
+    image: mvpar/vproapp:{VERSION}
     ports:
       - "8085:8080"
     volumes: 
       - vproappdata:/usr/local/tomcat/webapps
 
   vproweb:
-    image: mvpar/vproweb
+    image: mvpar/vproweb:{VERSION}
     ports:
-      - "81:80"
+      - "85:80"
 volumes:
   vprodbdata: {}
   vproappdata: {}
