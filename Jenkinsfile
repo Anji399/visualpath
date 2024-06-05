@@ -9,7 +9,7 @@ pipeline {
         stage('checkout') {
             steps {
                 script {
-                    git changelog: false, poll: false, url: 'https://github.com/Anji399/vp-docker.git'
+                    git changelog: false, poll: false, url: 'https://github.com/Anji399/visualpath.git'
                 }    
             }
         }
