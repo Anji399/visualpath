@@ -18,7 +18,7 @@ pipeline {
             steps {
                 script {
                     echo "My Image is ${VERSION}"
-                    sh 'cd /var/lib/jenkins/workspace/web/Docker-web && docker build -t mvpar/vproweb:${VERSION} .'
+                    sh 'cd $HOME/workspace/web/Docker-web && docker build -t mvpar/vproweb:${VERSION} .'
                 }
                 
             }
