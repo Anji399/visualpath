@@ -37,6 +37,11 @@ pipeline {
             }
         }
         stage('Deploy') {
-            
+            steps {
+                script {
+                    sh "cd $HOME/workspace/web/compose && docker-compose down && docker-compose up -d"
+                }
+            }
+        }      
     }
 }
