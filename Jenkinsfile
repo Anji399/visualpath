@@ -1,10 +1,5 @@
 pipeline {
     agent any
-
-    environment {
-    VERSION ="1.${env.BUILD_NUMBER}"
-    }
-
     stages {
         stage('checkout') {
             steps {
@@ -16,10 +11,9 @@ pipeline {
         stage('build') {
             steps {
                 script {
-                    echo "My Image is ${VERSION}"
-                    sh 'cd $HOME/workspace/web/Docker-web && docker build -t mvpar/vproweb:${VERSION} .'
-                    sh 'cd $HOME/workspace/web/Docker-app && docker build -t mvpar/vproapp:${VERSION} .'
-                    sh 'cd $HOME/workspace/web/Docker-db && docker build -t mvpar/vprodb:${VERSION} .'
+                    sh 'cd $HOME/workspace/web/Docker-web && docker build -t mvpar/vproweb .'
+                    sh 'cd $HOME/workspace/web/Docker-app && docker build -t mvpar/vproapp .'
+                    sh 'cd $HOME/workspace/web/Docker-db && docker build -t mvpar/vprodb .'
                 }
                 
             }
@@ -29,9 +23,9 @@ pipeline {
                 script {
                    withCredentials([usernamePassword(credentialsId: 'docker', passwordVariable: 'REGISTRY_PWD', usernameVariable: 'REGISTRY_USER')]) {
                        sh 'docker login -u=$REGISTRY_USER -p=$REGISTRY_PWD'    
-                       sh 'docker push mvpar/vproweb:${VERSION}'
-                       sh 'docker push mvpar/vproapp:${VERSION}'
-                       sh 'docker push mvpar/vprodb:${VERSION}'
+                       sh 'docker push mvpar/vproweb'
+                       sh 'docker push mvpar/vproapp'
+                       sh 'docker push mvpar/vprodb'
                     }
                 }
             }
