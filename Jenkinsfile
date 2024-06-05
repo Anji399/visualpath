@@ -38,7 +38,7 @@ pipeline {
                 script {
                     sh 'docker rm -f php'
                     sh 'docker pull mvpar/vproweb:${VERSION}'
-                    sh 'docker run -d --name php -p 81:80 mvpar/php-hello:${VERSION}'
+                    sh 'docker run -d --name php -p 81:80 mvpar/vproweb:${VERSION}'
                 }
             }
         }
