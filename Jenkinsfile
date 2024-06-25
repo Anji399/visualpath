@@ -4,7 +4,7 @@ pipeline {
         stage('checkout') {
             steps {
                 script {
-                    git changelog: false, poll: false, url: 'https://github.com/Anji399/visualpath.git'
+                    git changelog: false, credentialsId: 'git', poll: false, url: 'https://github.com/Anji399/visualpath.git'
                 }    
             }
         }
