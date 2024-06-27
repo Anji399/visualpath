@@ -45,7 +45,7 @@
                                     class="icon-bar"></span><span class="icon-bar"></span>
                             </button>
                             <a class="navbar-brand" href="${contextPath}/index">TRIMURTHI INSTITUTE</a>
-                            <i class="brand_network"><small><small>VProfile</small></small></i>
+                            <i class="brand_network"><small><small>Trimurthi</small></small></i>
                         </div>
                         <div class="navbar-collapse collapse">
                             <ul class="nav navbar-nav">
